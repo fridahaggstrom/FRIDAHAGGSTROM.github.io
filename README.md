@@ -1,1 +1,1 @@
-# FRIDAHAGGSTROM.github.io
+# fridahaggstrom.github.io
