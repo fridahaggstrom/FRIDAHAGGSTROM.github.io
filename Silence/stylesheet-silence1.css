@@ -1,0 +1,36 @@
+@font-face {
+  font-family:"MyWebFont1";
+  src: url("TACITE.otf");
+}
+
+@font-face {
+  font-family: "MyWebFont2";
+  src: url("SpaceGrotesk-Light.woff2");
+}
+
+a:link {
+  font-family: "MyWebFont1";
+  color: white;
+  font-size: 50px;
+  text-decoration: none;
+}
+
+a:hover {
+  font-family: "MyWebFont1";
+  color: white;
+  text-decoration: none;
+  background-color: white;
+  border: solid white 25px;
+}
+
+a:visited {
+  font-family: "MyWebFont1";
+  font-style: none;
+  text-decoration: none;
+  color: white;
+}
+
+.img1 {
+  width: 70%;
+  
+}
