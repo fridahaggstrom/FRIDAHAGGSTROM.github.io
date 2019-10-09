@@ -1,0 +1,48 @@
+.E1 {
+  position:relative;
+  margin: 1%;
+  float: left;
+  top:;
+  width: 150px;
+  height: 400px;
+  border: solid magenta 2px;
+}
+
+.E2 {
+  position:relative;
+  margin: 1%;
+  float: left;
+  width: 500px;
+  height: 400px;
+  border: solid magenta 2px;
+  transition-property: backgr 
+}
+
+ .E3 {
+  position:relative;
+  float: right;
+  margin: 1%;
+  width: 500px;
+  height: 400px;
+  border: solid magenta 2px;
+}
+
+.E4 {
+  position:relative;
+  float: right;
+  top:;
+  margin: 1%;
+  width: 200px;
+  height: 200px;
+  border: solid magenta 2px;
+}
+
+.E5 {
+  position:relative;
+  float: right;
+  top:;
+  margin: 1%;
+  width: 800px;
+  height: 200px;
+  border: solid magenta 2px;
+}
