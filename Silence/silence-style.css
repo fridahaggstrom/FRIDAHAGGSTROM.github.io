@@ -1,31 +1,26 @@
 @font-face {
-  font-family:"MyWebFont1";
-  src: url("TACITE.otf");
-}
-
-@font-face {
   font-family:"MyWebFont2";
-  src: url("SpaceGrotesk-Light.woff2");
+  src: url("SpaceGrotesk-Regular.woff");
 }
 
 
 a:link {
-  font-family: "MyWebFont1";
+  font-family: "MyWebFont2";
   color: black;
-  font-size: 90px;
+  font-size: 80px;
   text-decoration: none;
 }
 
 a:hover {
-  font-family: "MyWebFont1";
+  font-family: "MyWebFont2";
   color: black;
   background-color: black;
   text-decoration: none;
-  border: solid black 20px;
+  border: solid black 40px;
 }
 
 a:visited {
-  font-family: "MyWebFont1";
+  font-family: "MyWebFont2";
   font-style: normal;
   text-decoration: none;
   color: black;
