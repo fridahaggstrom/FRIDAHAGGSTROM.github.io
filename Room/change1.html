@@ -114,11 +114,6 @@
 
 
 			//kuberna
-			var geometry = new THREE.CubeGeometry(4, 4);
-			var material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
-			var cube = new THREE.Mesh( geometry, material );
-			cube.castShadow = true;
-			scene.add( cube );
 
 			var geometry = new THREE.CubeGeometry(20, 8, 32);
 			var material = new THREE.MeshPhongMaterial( { color: 0xFDCED7 } );
@@ -135,9 +130,9 @@
 
 
 			//spheres
-			var geometry = new THREE.SphereBufferGeometry(4, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
 			var material = new THREE.MeshStandardMaterial( {
-				shininess: 10,
+				shininess: 20,
 				color: 0xffffff,
 				map: textureNoiseColor});
 			var sphere = new THREE.Mesh( geometry, material );
@@ -155,35 +150,6 @@
 			scene.add( jord );
 
 
-			//torusknots
-			var geometry = new THREE.TorusKnotBufferGeometry(1.5, .5, 256, 32, 1, 5);
-			var material = new THREE.MeshStandardMaterial( {
-						side: THREE.DoubleSide,
-						color: 0x875BFA,
-						metalness: 0,
-						roughness: 0, } );
-			var TorusKnot = new THREE.Mesh( geometry, material );
-			TorusKnot.castShadow = true;
-			scene.add( TorusKnot );
-
-			var geometry = new THREE.TorusKnotBufferGeometry(10, .1, 256, 32, 1, 8);
-			var material = new THREE.MeshStandardMaterial( { color: 0xCCBAFE,						metalness: 0,
-									roughness: 0   } );
-			var TorusKnot2 = new THREE.Mesh( geometry, material );
-			scene.add( TorusKnot2 );
-
-			var geometry = new THREE.TorusBufferGeometry( 3, 1, 50, 200 );
-			var material = new THREE.MeshStandardMaterial( {
-				side: THREE.DoubleSide,
-				metalness: .1,
-				shininess: 200,
-				color: 0xffffff,
-				map: textureNoiseColor } );
-			var torus2 = new THREE.Mesh( geometry, material );
-			torus2.castShadow = true;
-			scene.add( torus2 );
-
-
 
 
 			//location
@@ -199,8 +165,6 @@
 			tavla.position.z = -39;
 			tavla.position.x =-10;
 
-			cube.position.x= 5;
-
 			sphere.position.y= -16;
 			sphere.position.z = -25;
 			sphere.position.x = 25;
@@ -209,12 +173,6 @@
 			jord.position.y=-10;
 
 
-			TorusKnot.position.x=-5;
-
-			TorusKnot2.position.z=-10;
-
-			torus2.position.y=10;
-
 			camera.position.z = 8;
 			camera.position.y = 2;
 
@@ -222,24 +180,6 @@
 
 			function animate() {
 			requestAnimationFrame( animate );
-
-			//animation
-			cube.rotation.x += 0.03;
-			cube.rotation.y += 0.02;
-
-			//cube2.rotation.y += 0.01;
-
-
-			TorusKnot.rotation.x += 0.01;
-			TorusKnot.rotation.y += 0.02;
-
-			TorusKnot2.rotation.x += 0.01;
-			TorusKnot2.rotation.y += 0.02;
-
-			torus2.rotation.x += 0.01;
-			torus2.rotation.y += 0.01;
-			torus2.rotation.z += 0.02;
-
 
 
 
