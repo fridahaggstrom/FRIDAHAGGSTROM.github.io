@@ -74,13 +74,15 @@
 
 				var textureLoader = new THREE.TextureLoader();
 
-					var textureJord = textureLoader.load( "https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/planets/moon_1024.jpg" );
+					var textureJord = textureLoader.load( "https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/planets/earth_specular_2048.jpg" );
 					textureJord.repeat.set( 1, 1 );
 					textureJord.wrapS = textureJord.wrapT = THREE.RepeatWrapping;
 					textureJord.format = THREE.RGBFormat;
 
-			var tavlaTexture = textureLoader.load("https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg")
-			var windowTexture = textureLoader.load("https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg")
+			var tavlaTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/mattise.jpg")
+			var tavladurerTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/durer.jpg")
+			var windowTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/window.jpg")
+			var bedTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/velvet.jpg")
 
 
 			//golvet
@@ -116,10 +118,11 @@
 			//kuberna
 
 			var geometry = new THREE.CubeGeometry(20, 8, 32);
-			var material = new THREE.MeshPhongMaterial( { color: 0xFDCED7 } );
+			var material = new THREE.MeshPhongMaterial( { color: 0xfcfcfc } );
 			var bed = new THREE.Mesh( geometry, material );
 			bed.castShadow = true;
 			scene.add( bed );
+
 
 			var geometry = new THREE.CubeGeometry(22, 18, .2);
 			var material = new THREE.MeshPhongMaterial( {
@@ -128,13 +131,29 @@
 			tavla.castShadow = true;
 			scene.add( tavla );
 
-			var geometry = new THREE.CubeGeometry(22, 18, .2);
+			var geometry = new THREE.CubeGeometry(14, 20, .2);
 			var material = new THREE.MeshPhongMaterial( {
-				map: tavlaTexture } );
+				map: tavladurerTexture } );
+			var tavladurer = new THREE.Mesh( geometry, material );
+			tavla.castShadow = true;
+			scene.add( tavladurer );
+
+			var geometry = new THREE.CubeGeometry(40, 32, .2);
+			var material = new THREE.MeshPhongMaterial( {
+				map: windowTexture } );
 			var tavla2 = new THREE.Mesh( geometry, material );
 			tavla2.castShadow = true;
 			scene.add( tavla2 );
 
+			//cylinder
+			var geometry = new THREE.CylinderBufferGeometry(4, 4, 15, 8);
+			var material = new THREE.MeshStandardMaterial( {
+				color: 0x000000,
+				metalness: 0,
+			roughness: 0 } );
+			var stativ = new THREE.Mesh( geometry, material );
+			stativ.castShadow = true;
+			scene.add( stativ );
 
 			//spheres
 			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
@@ -172,12 +191,27 @@
 			tavla.position.z = -39;
 			tavla.position.x =-10;
 
-			sphere.position.y= -16;
-			sphere.position.z = -25;
-			sphere.position.x = 25;
+			tavladurer.position.y = 15;
+			tavladurer.position.z = -39;
+			tavladurer.position.x =20;
 
-			jord.position.x=0;
-			jord.position.y=-10;
+			tavla2.position.y = 10;
+			tavla2.position.z = 60;
+			tavla2.position.x =12;
+
+
+			sphere.position.y=-12;
+			sphere.position.z = 36;
+			sphere.position.x = 33;
+
+			jord.position.x=-25;
+			jord.position.y=0;
+			jord.position.z=20;
+
+
+			stativ.position.x=-25;
+			stativ.position.y=-13;
+			stativ.position.z=20;
 
 
 			camera.position.z = 8;
@@ -187,6 +221,9 @@
 
 			function animate() {
 			requestAnimationFrame( animate );
+
+			//jord.rotation.x += 0.03;
+			jord.rotation.y += 0.02;
 
 
 
