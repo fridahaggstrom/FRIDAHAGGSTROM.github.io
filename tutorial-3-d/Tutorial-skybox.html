@@ -16,11 +16,13 @@
 <body>
     <script src="three.js-master/build/three.min.js"></script>
     <script src="OrbitControls.js"></script>
+    <script src="OBJLoader.js"></script>
+
 
     <script>
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(0xcccccc);
-        scene.fog = new THREE.FogExp2(0xcccccc, .1);
+      //  scene.fog = new THREE.FogExp2(0xcccccc, .001);
         var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
         var renderer = new THREE.WebGLRenderer();
@@ -37,61 +39,104 @@
 
         controls = new THREE.OrbitControls( camera, renderer.domElement);
 
+
+
+
         //create the shape
-        var geometry = new THREE.CubeGeometry(1, 1, 1);
+        var geometry = new THREE.CubeGeometry(10, 10, 10);
 
         var cubeMaterials = [
-  // back side
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/interview/Carlota-Guerrero-120.jpg'),
-    side: THREE.DoubleSide
-  }),
-  // front side
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/baronwatts/skybox_images/master/front.jpg'),
-    side: THREE.DoubleSide
-  }),
-  // Top side
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/baronwatts/skybox_images/master/top.jpg'),
-    side: THREE.DoubleSide
-  }),
-  // Bottom side
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/baronwatts/skybox_images/master/down.jpg'),
-    side: THREE.DoubleSide
-  }),
-  // right side
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/baronwatts/skybox_images/master/right.png'),
-    side: THREE.DoubleSide
-  }),
-  // left side
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/baronwatts/skybox_images/master/left.jpg'),
-    side: THREE.DoubleSide
-  })
-];
+              // back side
+              new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/px.jpg'),
+                side: THREE.DoubleSide
+              }),
+              // front side
+              new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/nx.jpg'),
+                side: THREE.DoubleSide
+              }),
+              // Top side
+              new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/py.jpg'),
+                side: THREE.DoubleSide
+              }),
+              // Bottom side
+              new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/ny.jpg'),
+                side: THREE.DoubleSide
+              }),
+              // right side
+              new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/pz.jpg'),
+                side: THREE.DoubleSide
+              }),
+              // left side
+              new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/nz.jpg'),
+                side: THREE.DoubleSide
+              })
+            ];
         var cubeMaterials = new THREE.MeshFaceMaterial( cubeMaterials);
         var cube = new THREE.Mesh( geometry, cubeMaterials);
+        cubeMaterials.receiveShadow = true;
+        cube.receiveShadow = true;
+        cube.castShadow = true;
         scene.add( cube );
 
+        var geometry = new THREE.SphereBufferGeometry(1, 64, 32);
+        var material = new THREE.MeshStandardMaterial( {
+              side: THREE.DoubleSide,
+              color: 0x292FF9,
+              metalness: 0,
+              roughness: 0, } );
+        var sphere = new THREE.Mesh( geometry, material );
+        sphere.castShadow = true;
+        scene.add( sphere );
+
+        var textureLoader = new THREE.TextureLoader();
+
+					var textureJord = textureLoader.load( "https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/kandao3.jpg" );
+					textureJord.repeat.set( 1, 1 );
+					textureJord.wrapS = textureJord.wrapT = THREE.RepeatWrapping;
+					textureJord.format = THREE.RGBFormat;
+
+        var geometry = new THREE.SphereBufferGeometry(50, 64, 32);
+        var material = new THREE.MeshPhongMaterial( {
+          side: THREE.DoubleSide,
+          shininess: 0,
+          color: 0xffffff,
+          map: textureJord});
+        var jord = new THREE.Mesh( geometry, material );
+        jord.castShadow = true;
+        scene.add( jord );
 
 
+        function loadModel() {
+  		    var loader = new THREE.OBJLoader();
+  		    loader.load( 'https://fridahaggstrom.github.io/3-d/fusion.obj', function ( object ) {
+          object.scale.setScalar( .05 ),
+            scene.add( object );
+  						    } );
+  		  }
 
 
         camera.position.z = 3;
 
-        var ambientLight = new THREE.AmbientLight(0xffffff, .5);
+        var ambientLight = new THREE.AmbientLight(0xffffff, .8);
         scene.add(ambientLight);
 
         var light = new THREE.SpotLight (0xF309C3, .5);
-        scene.add(light);
-        light.position.y = 10;
+        light.castShadow =true;
+      //  scene.add(light);
+        light.position.y = 100;
 
-        var light = new THREE.SpotLight (0x19F705, .7);
-        scene.add(light);
+        var light2 = new THREE.SpotLight (0x19F705, .7);
+        light2.castShadow = true;
+      //  scene.add(light2);
         light.position.x = 20;
+
+
 
 
         // game logic, animation
@@ -111,7 +156,9 @@
           render();
         };
 
+        loadModel();
         GameLoop();
+
     </script>
 
 </body>
