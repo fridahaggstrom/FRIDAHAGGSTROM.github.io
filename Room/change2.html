@@ -26,7 +26,7 @@
 
 				//alla ljus
 				light = new THREE.PointLight(
-					0xffffff, .7)
+					0xffffff, .3)
 				light.castShadow = true;
 				scene.add( light )
 				light.position.x=10;
@@ -34,9 +34,9 @@
 
 				light2 = new THREE.DirectionalLight (0xE3D2FE, .3);
 				scene.add(light2)
-				light2.position.x=10;
+				light2.position.x=0;
 
-				light3 = new THREE.AmbientLight( 0xffffff, 0.3 );
+				light3 = new THREE.AmbientLight( 0x000000, 0.3 );
 				light3.castShadow = true;
 				scene.add( light3 )
 
@@ -86,7 +86,7 @@
 
 			var tavlaTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/mattise.jpg")
 			var tavladurerTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/durer.jpg")
-			var windowTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/window.jpg")
+			var windowTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/window-skynight.jpg")
 			var bedTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/velvet.jpg")
 			var tavlailmatarTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/Ilmatar.jpg")
 

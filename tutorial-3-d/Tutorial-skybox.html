@@ -96,7 +96,7 @@
 
         var textureLoader = new THREE.TextureLoader();
 
-					var textureJord = textureLoader.load( "https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/kandao3.jpg" );
+					var textureJord = textureLoader.load( "https://fridahaggstrom.github.io/Room/Bilder/space.jpg" );
 					textureJord.repeat.set( 1, 1 );
 					textureJord.wrapS = textureJord.wrapT = THREE.RepeatWrapping;
 					textureJord.format = THREE.RGBFormat;
@@ -114,8 +114,8 @@
 
         function loadModel() {
   		    var loader = new THREE.OBJLoader();
-  		    loader.load( 'https://fridahaggstrom.github.io/3-d/Bush-Plant.obj', function ( object ) {
-          object.scale.setScalar( .05 ),
+  		    loader.load( 'https://fridahaggstrom.github.io/tutorial-3-d/Bush-Plant.obj', function ( object ) {
+          object.scale.setScalar( .02 ),
             scene.add( object );
   						    } );
   		  }
