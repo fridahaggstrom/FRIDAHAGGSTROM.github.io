@@ -158,7 +158,7 @@
 				color: 0xffffff,
 				map: textureSpace});
 			var space = new THREE.Mesh( geometry, material );
-			//scene.add( space );
+			scene.add( space );
 
 			//rummet
 			var geometry = new THREE.CubeGeometry(100, 100, 100);
@@ -331,6 +331,9 @@
 
 			//jord.rotation.x += 0.03;
 			jord.rotation.y += 0.1;
+
+			space.rotation.y +=0.002;
+
 
 			TorusKnot2.rotation.x += 0.01;
 			TorusKnot2.rotation.y += 0.02;

@@ -15,8 +15,8 @@
 		<script>
 			// Our Javascript will go here.
 			var scene = new THREE.Scene();
-			scene.background = new THREE.Color( 0xffffff );
-			//scene.fog = new THREE.FogExp2(0xC6C3C6, .03);
+			scene.background = new THREE.Color( 0x19F903 );
+			scene.fog = new THREE.FogExp2(0xC6C3C6, .04);
 
 
 
@@ -26,17 +26,17 @@
 
 				//alla ljus
 				light = new THREE.PointLight(
-					0xffffff, .7)
+					0xFA8D5D, .8)
 				light.castShadow = true;
 				scene.add( light )
 				light.position.x=10;
 				light.position.y=10;
 
-				light2 = new THREE.DirectionalLight (0xE3D2FE, .3);
+				light2 = new THREE.DirectionalLight (0xAA05F7, 1);
 				scene.add(light2)
 				light2.position.x=10;
 
-				light3 = new THREE.AmbientLight( 0xffffff, 0.3 );
+				light3 = new THREE.AmbientLight( 0x4AF705, 0.4 );
 				light3.castShadow = true;
 				scene.add( light3 )
 
@@ -79,6 +79,11 @@
 					textureJord.wrapS = textureJord.wrapT = THREE.RepeatWrapping;
 					textureJord.format = THREE.RGBFormat;
 
+					var textureJord2 = textureLoader.load( "https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/planets/moon_1024.jpg" );
+					textureJord2.repeat.set( 1, 1 );
+					textureJord2.wrapS = textureJord2.wrapT = THREE.RepeatWrapping;
+					textureJord2.format = THREE.RGBFormat;
+
 					var textureSpace = textureLoader.load( "https://fridahaggstrom.github.io/Room/Bilder/space.jpg" );
 					textureSpace.repeat.set( 1, 1 );
 					textureSpace.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
@@ -86,9 +91,9 @@
 
 			var tavlaTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/mattise.jpg")
 			var tavladurerTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/durer.jpg")
-			var windowTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/window.jpg")
+			var windowTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/window-nature.jpg")
 			var bedTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/velvet.jpg")
-			var tavlailmatarTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/Ilmatar.jpg")
+			var tavlailmatarTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/Ilmatar2.jpg")
 
 
 			//golvet
@@ -105,6 +110,49 @@
 			ground.scale.set( 1000, 1000, 1000 );
 			ground.receiveShadow = true;
 			//scene.add( ground );
+
+
+			//skybox
+			var geometry = new THREE.CubeGeometry(300, 300, 300);
+
+			var cubeMaterials = [
+						// back side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/px.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// front side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/nx.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// Top side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/py.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// Bottom side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/ny.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// right side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/pz.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// left side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/nz.jpg'),
+							side: THREE.DoubleSide
+						})
+					];
+			var cubeMaterials = new THREE.MeshFaceMaterial( cubeMaterials);
+			var cube = new THREE.Mesh( geometry, cubeMaterials);
+			cubeMaterials.receiveShadow = true;
+			cube.receiveShadow = true;
+			cube.castShadow = true;
+		//	scene.add( cube );
 
 
 			//space
@@ -125,15 +173,15 @@
 				metalness:0,
 				roughness:0, } );
 			var rum = new THREE.Mesh( geometry, material );
-			rum.receiveShadow = true;
-			scene.add( rum );
-			light.add (rum);
+			//rum.receiveShadow = true;
+			//scene.add( rum );
+			//light.add (rum);
 
 
 
 			//kuberna
 
-			var geometry = new THREE.CubeGeometry(20, 15, 20);
+			var geometry = new THREE.CubeGeometry(10,20, 20);
 			var material = new THREE.MeshStandardMaterial( { color: 0xfcfcfc } );
 			var bed = new THREE.Mesh( geometry, material );
 			bed.castShadow = true;
@@ -179,20 +227,38 @@
 			scene.add( stativ );
 
 			//torus
-			var geometry = new THREE.TorusKnotBufferGeometry(8, .3, 256, 32, 1, 5);
+			var geometry = new THREE.TorusKnotBufferGeometry(6, 2, 256, 32, 1, 5);
 			var material = new THREE.MeshStandardMaterial( { color: 0xCCBAFE,						metalness: 0,
 									roughness: 0   } );
 			var TorusKnot2 = new THREE.Mesh( geometry, material );
 			TorusKnot2.castShadow = true;
 			scene.add( TorusKnot2 );
 
-			var geometry = new THREE.TorusBufferGeometry(5, 3, 50, 200);
+			var geometry = new THREE.TorusBufferGeometry(10, 7, 50, 200);
 			var material = new THREE.MeshStandardMaterial( {
 				side:THREE.DoubleSide,
 					map:textureNoiseColor, } );
 			var Torus = new THREE.Mesh( geometry, material );
 			Torus.castShadow = true;
 			scene.add( Torus );
+
+			var geometry = new THREE.TorusBufferGeometry(80, 3, 50, 200);
+			var material = new THREE.MeshStandardMaterial( {
+				color: 0x0C05F7,
+				metalness: 0,
+				roughness: 0   } );
+			var Torus2 = new THREE.Mesh( geometry, material );
+			Torus2.castShadow = true;
+			scene.add( Torus2 );
+
+			var geometry = new THREE.TorusKnotBufferGeometry(40, .3, 256, 32, 1, 8);
+			var material = new THREE.MeshStandardMaterial( {
+				side: THREE.Doubleside,
+				color: 0xCCBAFE,
+				metalness: 0,
+				roughness: 0   } );
+			var TorusKnot3 = new THREE.Mesh( geometry, material );
+			scene.add( TorusKnot3 );
 
 			//spheres
 			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
@@ -204,15 +270,36 @@
 			sphere.castShadow = true;
 		//	scene.add( sphere );
 
-			var geometry = new THREE.SphereBufferGeometry(5, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(10, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
-				shininess: 0,
+				shininess: 20,
 				color: 0xffffff,
 				map: textureJord});
 			var jord = new THREE.Mesh( geometry, material );
 			jord.castShadow = true;
 			scene.add( jord );
+
+
+			var geometry = new THREE.SphereBufferGeometry(10, 64, 32);
+			var material = new THREE.MeshPhongMaterial( {
+				side: THREE.DoubleSide,
+				shininess: 20,
+				color: 0xffffff,
+				map: textureSpace});
+			var jord3 = new THREE.Mesh( geometry, material );
+			jord3.castShadow = true;
+			scene.add( jord3 );
+
+			var geometry = new THREE.SphereBufferGeometry(10, 64, 32);
+			var material = new THREE.MeshPhongMaterial( {
+				side: THREE.DoubleSide,
+				shininess: 20,
+				color: 0xffffff,
+				map: textureJord2});
+			var jord2 = new THREE.Mesh( geometry, material );
+			jord2.castShadow = true;
+			scene.add( jord2 );
 
 
 
@@ -222,35 +309,47 @@
 			rum.position.z= 10;
 			rum.position.x= 0;
 
-			bed.position.y = - 13;
-			bed.position.z = -14;
-			bed.position.x = 40;
+			bed.position.y = - 8;
+			bed.position.z = -34;
+			bed.position.x = 50;
 
-			tavla.position.y = 8;
+
+			tavla.position.y = -5;
 			tavla.position.z = -39;
 			tavla.position.x =-10;
+			tavla.rotation.z=2;
 
-			tavlailmatar.position.y = 30;
-			tavlailmatar.position.z = -39;
-			tavlailmatar.position.x =10;
+			tavlailmatar.position.y = 40;
+			tavlailmatar.position.z = 45;
+			tavlailmatar.position.x =-20;
+			tavlailmatar.rotation.z=.1;
 
 			tavladurer.position.y = 20;
 			tavladurer.position.z = -39;
 			tavladurer.position.x =36;
+			tavladurer.rotation.z = 1;
+
+
+
 
 			tavla2.position.y = 20;
 			tavla2.position.z = 60;
 			tavla2.position.x =12;
 
-			Torus.position.z=-14;
-			Torus.position.x=40;
-			Torus.position.y=2;
+
+			Torus.position.z=-5;
+			Torus.position.x=35;
+			Torus.position.y=35;
 			Torus.rotation.x=.5;
 			Torus.rotation.y=1.5;
 
-			TorusKnot2.position.z=35;
-			TorusKnot2.position.x=40;
-			TorusKnot2.position.y=-7;
+			TorusKnot2.position.z=-10;
+			TorusKnot2.position.x=-10;
+			TorusKnot2.position.y=0;
+
+			TorusKnot3.position.z=10;
+			TorusKnot3.position.x=60;
+			TorusKnot3.position.y=-30;
 
 			TorusKnot2.rotation.y=1;
 
@@ -259,14 +358,23 @@
 			sphere.position.z = 36;
 			sphere.position.x = 33;
 
-			jord.position.x=-25;
-			jord.position.y=0;
-			jord.position.z=20;
+			jord.position.x=30;
+			jord.position.y=-15;
+			jord.position.z=40;
+
+			jord2.position.x=-30;
+			jord2.position.y=20;
+			jord2.position.z=40;
+
+			jord3.position.x=-30;
+			jord3.position.y=20;
+			jord3.position.z=40;
 
 
-			stativ.position.x=-25;
-			stativ.position.y=-13;
+			stativ.position.x=-40;
+			stativ.position.y=-60;
 			stativ.position.z=20;
+			stativ.rotation.z=1.5;
 
 
 			camera.position.z = 8;
@@ -278,7 +386,41 @@
 			requestAnimationFrame( animate );
 
 			//jord.rotation.x += 0.03;
-			jord.rotation.y += 0.02;
+			jord.rotation.y += 0.05;
+			jord.rotation.x += 0.05;
+
+			jord2.rotation.y += 0.01;
+			jord2.rotation.x += 0.01;
+
+			TorusKnot2.rotation.x += 0.01;
+			TorusKnot2.rotation.y += 0.02;
+
+			TorusKnot3.rotation.x += 0.01;
+			TorusKnot3.rotation.y += 0.02;
+
+			tavla.rotation.x += 0.01;
+			tavla.rotation.y += 0.02;
+
+			tavla2.rotation.x += 0.01;
+			tavla2.rotation.y += 0.02;
+
+			tavladurer.rotation.x += 0.01;
+			tavladurer.rotation.y += 0.02;
+
+			tavlailmatar.rotation.x += 0.01;
+			tavlailmatar.rotation.y += 0.02;
+
+			bed.rotation.x += 0.01;
+			bed.rotation.y += 0.02;
+
+			Torus.rotation.y +=0.02;
+			Torus.rotation.x+=0.02;
+
+			Torus2.rotation.y +=0.02;
+
+			stativ.rotation.x+=0.01;
+			stativ.rotation.y+=0.02;
+
 
 
 

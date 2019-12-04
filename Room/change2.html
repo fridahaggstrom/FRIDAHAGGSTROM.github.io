@@ -113,7 +113,7 @@
 				side: THREE.DoubleSide,
 				shininess: 0,
 				color: 0xffffff,
-				map: textureSpace});
+				map: textureNoiseColor});
 			var space = new THREE.Mesh( geometry, material );
 			scene.add( space );
 
@@ -180,8 +180,10 @@
 
 			//torus
 			var geometry = new THREE.TorusKnotBufferGeometry(8, .3, 256, 32, 1, 5);
-			var material = new THREE.MeshStandardMaterial( { color: 0xCCBAFE,						metalness: 0,
-									roughness: 0   } );
+			var material = new THREE.MeshStandardMaterial( {
+				color: 0xCCBAFE,
+				metalness: 0,
+				roughness: 0   } );
 			var TorusKnot2 = new THREE.Mesh( geometry, material );
 			TorusKnot2.castShadow = true;
 			scene.add( TorusKnot2 );
@@ -193,6 +195,7 @@
 			var Torus = new THREE.Mesh( geometry, material );
 			Torus.castShadow = true;
 			scene.add( Torus );
+
 
 			//spheres
 			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
