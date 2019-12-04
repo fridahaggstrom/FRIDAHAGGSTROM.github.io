@@ -128,6 +128,13 @@
 			tavla.castShadow = true;
 			scene.add( tavla );
 
+			var geometry = new THREE.CubeGeometry(22, 18, .2);
+			var material = new THREE.MeshPhongMaterial( {
+				map: tavlaTexture } );
+			var tavla2 = new THREE.Mesh( geometry, material );
+			tavla2.castShadow = true;
+			scene.add( tavla2 );
+
 
 			//spheres
 			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
