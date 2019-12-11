@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link
+		href="./stylesheet.css"
+		type="text/css"
+		rel="stylesheet"
+		>
 		<meta charset="utf-8">
 		<title>Room</title>
 		<style>
@@ -9,8 +14,10 @@
 		</style>
 	</head>
 	<body>
-		<script src="three.js"></script>
-		<script src="OrbitControls.js"></script>
+		<div id="info"><p>Another time = Another room</p></a>
+	</div>
+		<script src="./js/three.js"></script>
+		<script src="./js/OrbitControls.js"></script>
 
 		<script>
 			// Our Javascript will go here.
@@ -301,6 +308,38 @@
 			jord2.castShadow = true;
 			scene.add( jord2 );
 
+			//envmaps och cubecamera
+			var cubeCamera = new THREE.CubeCamera( 1, 1000, 512 );
+			scene.add( cubeCamera );
+
+			// Create car
+			var chromeGeometry = new THREE.CubeGeometry(2, 30, 2 );
+			var chromeMaterial = new THREE.MeshStandardMaterial( {
+				metalness:1,
+				roughness:0,
+				side: THREE.DoubleSide,
+				color: 0xffffff,
+				envMap: cubeCamera.renderTarget.texture } );
+			var car = new THREE.Mesh( chromeGeometry, chromeMaterial );
+			scene.add( car );
+
+			car.position.y=-5;
+			car.position.x=5;
+			car.position.z=-15;
+
+
+			// Update the render target cube
+		//	car.setVisible( false );
+			cubeCamera.position.copy( car.position );
+			cubeCamera.update( renderer, scene );
+
+			// Render the scene
+		//	car.setVisible( true );
+			renderer.render( scene, camera );
+
+			var cubeCamera = new THREE.CubeCamera( 7, 1000, 512 );
+			scene.add( cubeCamera );
+
 
 
 
@@ -420,6 +459,9 @@
 
 			stativ.rotation.x+=0.01;
 			stativ.rotation.y+=0.02;
+
+			car.rotation.x+=0.01;
+			car.rotation.y+=0.01;
 
 
 

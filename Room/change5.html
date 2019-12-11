@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link
+		href="./stylesheet.css"
+		type="text/css"
+		rel="stylesheet"
+		>
+		<meta charset="utf-8">
+		<title>Room</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<div id="info"><p>Another time = Another room</p></a>
+	</div>
+		<script src="./js/three.js"></script>
+		<script src="./js/OrbitControls.js"></script>
+
+		<script>
+			// Our Javascript will go here.
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 0x000000 );
+			scene.add(scene);
+			//scene.fog = new THREE.FogExp2(0xC6C3C6, .03);
+
+
+
+			var camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			camera.position.set( -2, 0, 300 );
+
+
+		//alla ljus - verkar bestämma positionen av saker? märkligt.
+				light = new THREE.PointLight(
+					0xffffff, .6)
+				light.castShadow = true;
+				scene.add( light )
+				light.position.x=10;
+				light.position.y=10;
+
+			//andra ljusen
+				light2 = new THREE.DirectionalLight (0xffffff, 1);
+				scene.add(light2)
+				light2.position.y=-70;
+
+				light3 = new THREE.AmbientLight( 0xffffff, .5 );
+				light3.castShadow = true;
+				scene.add( light3 )
+
+
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.shadowMap.enabled = true;
+			renderer.shadowMap.type = THREE.BasicShadowMap;
+			document.body.appendChild( renderer.domElement );
+
+			//controls
+			controls = new THREE.OrbitControls ( camera, renderer.domElement);
+			//controls.minDistance = 0;
+		//	controls.maxDistance = 40;
+
+
+			//ser till så att fönstret anpassar sig
+			window.addEventListener ( "resize", function(){
+				var width = window.innerWidth;
+				var height = window.innerHeight;
+				renderer.setSize( width, height);
+				camera.aspect = width / height;
+				camera.updateProjectionMatrix();
+			})
+
+
+			//textureloader
+			var textureLoader = new THREE.TextureLoader();
+
+				var textureNoiseColor = textureLoader.load( "https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/disturb.jpg" );
+				textureNoiseColor.repeat.set( 1, 1 );
+				textureNoiseColor.wrapS = textureNoiseColor.wrapT = THREE.RepeatWrapping;
+				textureNoiseColor.format = THREE.RGBFormat;
+
+				var textureLoader = new THREE.TextureLoader();
+
+					var textureJord = textureLoader.load( "https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/planets/earth_specular_2048.jpg" );
+					textureJord.repeat.set( 1, 1 );
+					textureJord.wrapS = textureJord.wrapT = THREE.RepeatWrapping;
+					textureJord.format = THREE.RGBFormat;
+
+					var textureSpace = textureLoader.load( "https://fridahaggstrom.github.io/Room/Bilder/space.jpg" );
+					textureSpace.repeat.set( 1, 1 );
+					textureSpace.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
+					textureSpace.format = THREE.RGBFormat;
+
+			var tavlaTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/mattise.jpg")
+			var tavladurerTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/durer.jpg")
+			var windowTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/window.jpg")
+			var bedTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/velvet.jpg")
+			var tavlailmatarTexture = textureLoader.load("https://fridahaggstrom.github.io/Room/Bilder/Ilmatar.jpg")
+
+
+			//golvet
+			var groundMaterial = new THREE.MeshStandardMaterial( {
+				side: THREE.DoubleSide,
+				shininess: 40,
+				color: 0xFE3200,
+				specular: 0xffffff,
+			} );
+			var planeGeometry = new THREE.PlaneBufferGeometry( 100, 100 );
+			var ground = new THREE.Mesh( planeGeometry, groundMaterial );
+			ground.position.set( 0, -20, 0 );
+			ground.rotation.x = - Math.PI / 2;
+			ground.scale.set( 1000, 1000, 1000 );
+			//ground.receiveShadow = true;
+			//scene.add( ground );
+
+
+			//skybox
+			var geometry = new THREE.CubeGeometry(300, 300, 300);
+
+			var cubeMaterials = [
+						// back side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/px.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// front side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/nx.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// Top side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/py.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// Bottom side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/ny.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// right side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/pz.jpg'),
+							side: THREE.DoubleSide
+						}),
+						// left side
+						new THREE.MeshBasicMaterial({
+							map: new THREE.TextureLoader().load('https://fridahaggstrom.github.io/tutorial-3-d/three.js-master/examples/textures/cube/skyboxsun25deg/nz.jpg'),
+							side: THREE.DoubleSide
+						})
+					];
+			var cubeMaterials = new THREE.MeshFaceMaterial( cubeMaterials);
+			var cube = new THREE.Mesh( geometry, cubeMaterials);
+			cubeMaterials.receiveShadow = true;
+			cube.receiveShadow = true;
+			cube.castShadow = true;
+		//	scene.add( cube );
+
+
+			//space
+			var geometry = new THREE.SphereBufferGeometry(300, 64, 32);
+			var material = new THREE.MeshPhongMaterial( {
+				side: THREE.DoubleSide,
+				shininess: 0,
+				color: 0xffffff,
+				map: textureSpace});
+			var space = new THREE.Mesh( geometry, material );
+			scene.add( space );
+
+
+
+			//rummet
+			var geometry = new THREE.CubeGeometry(100, 100, 100);
+			var material = new THREE.MeshStandardMaterial( {
+				side: THREE.DoubleSide,
+				color:0xffffff});
+			var rum = new THREE.Mesh( geometry, material );
+			rum.receiveShadow = true;
+			scene.add( rum );
+			light.add (rum);
+
+
+
+			//kuberna
+
+			var geometry = new THREE.CubeGeometry(20, 15, 20);
+			var material = new THREE.MeshPhongMaterial( { color: 0xFE3200 } );
+			var bed = new THREE.Mesh( geometry, material );
+			bed.castShadow = true;
+			scene.add( bed );
+
+
+			var geometry = new THREE.CubeGeometry(22, 18, .2);
+			var material = new THREE.MeshPhongMaterial( {
+				map: tavlaTexture } );
+			var tavla = new THREE.Mesh( geometry, material );
+			tavla.castShadow = true;
+			scene.add( tavla );
+
+			var geometry = new THREE.CubeGeometry(14, 20, .2);
+			var material = new THREE.MeshPhongMaterial( {
+				map: tavladurerTexture } );
+			var tavladurer = new THREE.Mesh( geometry, material );
+			tavla.castShadow = true;
+			scene.add( tavladurer );
+
+			var geometry = new THREE.CubeGeometry(28, 20, .2);
+			var material = new THREE.MeshPhongMaterial( {
+				map: tavlailmatarTexture } );
+			var tavlailmatar = new THREE.Mesh( geometry, material );
+			tavlailmatar.castShadow = true;
+			scene.add( tavlailmatar );
+
+			var geometry = new THREE.CubeGeometry(40, 32, .2);
+			var material = new THREE.MeshPhongMaterial( {
+				map: windowTexture } );
+			var tavla2 = new THREE.Mesh( geometry, material );
+			tavla2.castShadow = true;
+			scene.add( tavla2 );
+
+			//cylinder
+			var geometry = new THREE.CylinderBufferGeometry(4, 4, 15, 8);
+			var material = new THREE.MeshStandardMaterial( {
+				color: 0xFE3200,
+				metalness: 0,
+			roughness: 0 } );
+			var stativ = new THREE.Mesh( geometry, material );
+			stativ.castShadow = true;
+			scene.add( stativ );
+
+			//torus
+			var geometry = new THREE.TorusKnotBufferGeometry(8, .3, 256, 32, 1, 5);
+			var material = new THREE.MeshStandardMaterial( { color: 0xCCBAFE,						metalness: 0,
+									roughness: 0   } );
+			var TorusKnot2 = new THREE.Mesh( geometry, material );
+			TorusKnot2.castShadow = true;
+			scene.add( TorusKnot2 );
+
+			var geometry = new THREE.TorusBufferGeometry(5, 3, 50, 200);
+			var material = new THREE.MeshStandardMaterial( {
+				side:THREE.DoubleSide,
+					map:textureNoiseColor, } );
+			var Torus = new THREE.Mesh( geometry, material );
+			Torus.castShadow = true;
+			scene.add( Torus );
+
+			//spheres
+			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
+			var material = new THREE.MeshStandardMaterial( {
+				shininess: 20,
+				color: 0xffffff,
+				map: textureNoiseColor});
+			var sphere = new THREE.Mesh( geometry, material );
+			sphere.castShadow = true;
+		//	scene.add( sphere );
+
+			var geometry = new THREE.SphereBufferGeometry(5, 64, 32);
+			var material = new THREE.MeshPhongMaterial( {
+				side: THREE.DoubleSide,
+				shininess: 0,
+				color: 0xffffff,
+				map: textureJord});
+			var jord = new THREE.Mesh( geometry, material );
+			jord.castShadow = true;
+			scene.add( jord );
+
+
+			//envmaps och cubecamera
+			var cubeCamera = new THREE.CubeCamera( 7, 1000, 512 );
+			scene.add( cubeCamera );
+
+			// Create car
+			var chromeGeometry = new THREE.CubeGeometry(2, 20, 2 );
+			var chromeMaterial = new THREE.MeshStandardMaterial( {
+				metalness:2,
+				roughness:0,
+				side: THREE.DoubleSide,
+				color: 0xffffff,
+				envMap: cubeCamera.renderTarget.texture } );
+			var car = new THREE.Mesh( chromeGeometry, chromeMaterial );
+			scene.add( car );
+
+			car.position.y=2;
+
+			// Update the render target cube
+		//	car.setVisible( false );
+			cubeCamera.position.copy( car.position );
+			cubeCamera.update( renderer, scene );
+
+			// Render the scene
+		//	car.setVisible( true );
+			renderer.render( scene, camera );
+
+			var cubeCamera = new THREE.CubeCamera( 7, 1000, 512 );
+			scene.add( cubeCamera );
+
+			// Create car
+			var chromeGeometry = new THREE.TorusKnotBufferGeometry(5, 2, 150, 20 );
+			var chromeMaterial = new THREE.MeshPhongMaterial( {
+				metalness:2,
+				roughness:0,
+				side: THREE.DoubleSide,
+				color: 0xffffff,
+				envMap: cubeCamera.renderTarget.texture } );
+			var spegel2 = new THREE.Mesh( chromeGeometry, chromeMaterial );
+			scene.add( spegel2 );
+
+			spegel2.position.y=-10;
+
+			// Update the render target cube
+		//	car.setVisible( false );
+			cubeCamera.position.copy( car.position );
+			cubeCamera.update( renderer, scene );
+
+			// Render the scene
+		//	car.setVisible( true );
+			renderer.render( scene, camera );
+
+
+
+			//location
+			rum.position.y= 21;
+			rum.position.z= 10;
+			rum.position.x= 0;
+
+			bed.position.y = - 12;
+			bed.position.z = -14;
+			bed.position.x = 40;
+
+			tavla.position.y = 8;
+			tavla.position.z = -39;
+			tavla.position.x =-10;
+
+			tavlailmatar.position.y = 30;
+			tavlailmatar.position.z = -39;
+			tavlailmatar.position.x =10;
+
+			tavladurer.position.y = 20;
+			tavladurer.position.z = -39;
+			tavladurer.position.x =36;
+
+			tavla2.position.y = 20;
+			tavla2.position.z = 60;
+			tavla2.position.x =12;
+
+			Torus.position.z=-14;
+			Torus.position.x=40;
+			Torus.position.y=3;
+			Torus.rotation.x=.5;
+			Torus.rotation.y=1.5;
+
+			TorusKnot2.position.z=35;
+			TorusKnot2.position.x=40;
+			TorusKnot2.position.y=-7;
+
+			TorusKnot2.rotation.y=1;
+
+
+			sphere.position.y=-12;
+			sphere.position.z = 36;
+			sphere.position.x = 33;
+
+			jord.position.x=-25;
+			jord.position.y=2;
+			jord.position.z=20;
+
+
+			stativ.position.x=-25;
+			stativ.position.y=-12;
+			stativ.position.z=20;
+
+
+			camera.position.z = 8;
+			camera.position.y = 2;
+
+
+
+			function animate() {
+			requestAnimationFrame( animate );
+
+			//jord.rotation.x += 0.03;
+			jord.rotation.y += 0.02;
+
+			car.rotation.y +=0.01;
+
+			spegel2.rotation.y-=0.01;
+
+
+			renderer.render( scene, camera );
+		}
+
+		animate();
+
+
+
+		</script>
+	</body>
+</html>

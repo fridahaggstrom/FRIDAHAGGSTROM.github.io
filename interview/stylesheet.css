@@ -1,21 +1,21 @@
 @font-face {
 font-family:"MyWebFont";
-src: url("ATApoc-Revelations.otf");
+src: url("./Type/ATApoc-Revelations.otf");
 }
 
 @font-face {
 font-family: "MyWebFont2";
-src: url("Surt-Regular.woff");
+src: url("./Type/Surt-Regular.woff");
 }
 
 @font-face {
   font-family: "MyWebFont3";
-  src: url("Surt-UltraBoldExtended.otf");
+  src: url("./Type/Surt-UltraBoldExtended.otf");
 }
 
 @@font-face {
   font-family: "MyWebFont4";
-  src: url("Surt-Regular.woff");
+  src: url("./Type/Surt-Regular.woff");
 }
 
 .title {

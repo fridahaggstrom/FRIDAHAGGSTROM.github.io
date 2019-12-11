@@ -1,0 +1,16 @@
+@font-face {
+    font-family:"MyWebFont1";
+    src: url("./Type/NeueMachina-Ultrabold.otf");
+  }
+
+  #tail {
+      position: absolute;
+      float: left;
+
+  }
+
+.textstyle {
+  font-family: "MyWebFont1";
+  font-size: 150px;
+  color: green;
+}

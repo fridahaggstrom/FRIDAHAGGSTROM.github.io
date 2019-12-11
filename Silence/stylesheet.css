@@ -1,0 +1,14 @@
+@font-face {
+  font-family:"MyWebFont2";
+  src: url("./Type/SpaceGrotesk-Regular.woff");
+}
+
+
+.intro {
+  width: 50%;
+}
+
+
+img:hover {
+  background-color: black;
+}

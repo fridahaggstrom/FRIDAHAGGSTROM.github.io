@@ -1,0 +1,135 @@
+.letter-p {
+            top: 140px;
+            position: relative;
+            margin-left: 10px;
+            float: left;
+            border: blue solid 30px;
+            border-radius: 1px 60px 60px 1px;
+            background-color: white;
+            width: 200px;
+            height: 200px;
+          }
+
+          .leg-horizontal {
+            position: relative;
+            margin-left: -30px;
+            float: left;
+            top: 220px;
+            height: 200px;
+            width: 10px;
+            border: blue solid 10px;
+            background-color: blue;
+
+          }
+
+.letter-e {
+            position: relative;
+            margin-left: 20px;
+            float: left;
+            top: 70px;
+            width: 200px;
+            height: 600px;
+            background-color: white;
+
+          }
+
+          .e-leg-horizontal {
+            width: 100%;
+            height: 20%;
+            background-color: blue;
+          }
+
+          .e-leg-vertical {
+            width: 4%;
+            height: 20%;
+            background-color: blue;
+          }
+
+
+
+
+.letter-o {
+            position: relative;
+            margin-left: -30px;
+            float: left;
+            top: 190px;
+            width: 300px;
+            height: 300px;
+            border: solid blue 5px;
+            background-color: white;
+            border-radius: 80% 40% ;
+
+            }
+
+.letter-p2 {
+            position: relative;
+            margin-left: -100px;
+            float: left;
+            top: 30px;
+            width: 200px;
+            height: 50px;
+            border: solid blue 60px;
+            }
+
+            .letter-p2-leg-horizontal {
+              position: relative;
+              margin-left: -320px;
+              float: left;
+              top: 200px;
+              width: 60px;
+              height: 50px;
+              background-color: blue;
+            }
+
+.letter-l {
+            position: relative;
+            margin-left: -130px;
+            float: left;
+            top: 280px;
+            width: 60px;
+            height: 350px;
+            background-color: blue;
+
+          }
+          .letter-l-leg {
+            position: relative;
+            margin-left: -70px;
+            float: left;
+            top: 630px;
+            width: 130px;
+            height: 60px;
+            background-color: blue;
+          }
+
+.E4 {
+            position:relative;
+            float: left;
+            margin-left: ;
+            top: 100px;
+            width: 150px;
+            height: 200px;
+            background-color: blue;
+            transform: skew(20deg);
+          }
+
+              .E4-1 {
+                position:relative;
+                float: left;
+                top: 140px;
+                margin-left: -130px;
+                width: 130px;
+                height: 40px;
+                background-color: white;
+                transform: skew(20deg);
+              }
+
+              .E4-2 {
+                position:relative;
+                float: left;
+                top: 220px;
+                margin-left: -100px;
+                width: 130px;
+                height: 40px;
+                background-color: white;
+                transform: skew(20deg);
+              }

@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "MyWebFont1";
+  src: url("./Type/NeueMachina-Light.otf");
+}
+
+@font-face {
+  font-family: "MyWebFont2";
+  src: url("./Type/Surt-Regular.woff");
+}
+
+.sentence1 {
+  font-family: "MyWebFont2";
+  font-size: 80px;
+  color: black;
+}

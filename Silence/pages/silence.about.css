@@ -1,0 +1,63 @@
+@font-face {
+  font-family:"MyWebFont1";
+  src: url("./Type/SpaceGrotesk-Regular.woff");
+}
+
+@font-face {
+  font-family: "MyWebFont2";
+  src: url("./Type/SpaceGrotesk-Light.woff2");
+}
+
+  a.arkiv:link {
+    font-family: "MyWebFont2";
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    float: left;
+
+  }
+
+  a.arkiv:hover {
+    font-family: "MyWebFont2";
+    font-size: 20px;
+    text-decoration: line-through;
+    color: white;
+    float:left;
+  }
+
+  a.arkiv:visited {
+    font-family: "MyWebFont2";
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    float:left;
+  }
+
+.about {
+  font-family: "MyWebFont2";
+  transform: rotateX(180deg);
+  color: white;
+  float:right;
+  margin-top: -2px;
+  font-size: 20px;
+}
+
+.box1 {
+  padding:12%;
+}
+
+
+.abouttext {
+  font-family: "MyWebFont2";
+  color: white;
+  font-size: 20px;
+  margin: 10%;
+  margin-top:-3%;
+}
+
+
+.img7 {
+margin:30%;
+margin-top:-23%;
+width: 500px;
+}
