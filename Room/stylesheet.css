@@ -3,6 +3,10 @@ font-family:"MyWebFont";
 src: url("./Fonts/PanamaRegular.woff");
 }
 
+.intro {
+	color: white;
+}
+
 body {
 	margin: 0;
 	background-color: #000;
@@ -33,10 +37,6 @@ p {
   font-size: 15px;
 }
 
-a {
-	color: #ff0;
-	text-decoration: none;
-}
 
 a:hover {
 	text-decoration: underline;
@@ -54,7 +54,7 @@ a:hover {
 a.vidare:link {
   font-family: "MyWebFont";
   font-size: 20px;
-  color: black;
+  color: white;
   text-decoration: none;
 
 }
@@ -63,18 +63,12 @@ a.vidare:link {
     font-family: "MyWebFont";
     font-size: 20px;
     text-decoration: underline;
-    color: black;
+    color: white;
   }
 
   a.vidare:visited {
     font-family: "MyWebFont";
     font-size: 20px;
-    color: black;
+    color: white;
     text-decoration: none;
   }
-
-.generate {
-opacity: ;
-position:sticky;
-
-}
