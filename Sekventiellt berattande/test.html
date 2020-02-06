@@ -7,23 +7,24 @@
 		rel="stylesheet"
 		>
 		<meta charset="utf-8">
-		<title>Room</title>
+		<title>Earth</title>
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
 		</style>
 	</head>
 		<body>
-			<div id="info"><p>Another time = Another room</p></a>
+			<div id="info"><p>Leave</p></a>
 		</div>
 		<script src="./js/three.js"></script>
 		<script src="./js/OrbitControls.js"></script>
+		<script src="./js/FontLoader.js"></script>
 
 		<script>
 			// Our Javascript will go here.
 			var scene = new THREE.Scene();
 			scene.background = new THREE.Color( 0xffffff );
-			//scene.fog = new THREE.FogExp2(0xC6C3C6, .03);
+			scene.fog = new THREE.FogExp2(0xffffff, .01);
 
 
 
@@ -70,6 +71,10 @@
 				camera.updateProjectionMatrix();
 			})
 
+			//FontLoader
+			var FontLoader = new THREE.FontLoader ();
+
+
 
 			//textureloader
 			var textureLoader = new THREE.TextureLoader();
@@ -92,18 +97,20 @@
 					textureSpace.format = THREE.RGBFormat;
 
 			var tavlaTexture = textureLoader.load("./Bilder/mattise.jpg")
-			var tavladurerTexture = textureLoader.load("./Bilder/bild6.2.png")
+			var tavladurerTexture = textureLoader.load("./Bilder/Artboard1.png")
 			var windowTexture = textureLoader.load("./Bilder/window.jpg")
 			var bedTexture = textureLoader.load("./Bilder/velvet.jpg")
 			var tavlailmatarTexture = textureLoader.load("./Bilder/Ilmatar.jpg")
 
 
+
+
 			//golvet
 			var groundMaterial = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
-				shininess: 40,
-				color: 0x000000,
-				specular: 0x000000,
+				shininess: 0,
+				color: 0xFF857F,
+				specular: 0xFF857F,
 			} );
 			var planeGeometry = new THREE.PlaneBufferGeometry( 100, 100 );
 			var ground = new THREE.Mesh( planeGeometry, groundMaterial );
@@ -111,7 +118,7 @@
 			ground.rotation.x = - Math.PI / 2;
 			ground.scale.set( 1000, 1000, 1000 );
 			ground.receiveShadow = true;
-			//scene.add( ground );
+			scene.add( ground );
 
 
 

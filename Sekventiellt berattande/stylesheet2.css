@@ -1,15 +1,13 @@
-#tail {
-    position: absolute;
-    float: left;
-
+@font-face {
+  font-family: "MyWebFont1";
+  src: url("./Type/PanamaItalic.woff");
 }
 
-.textstyle {
-font-family: "MyWebFont1";
-font-size: 150px;
-color: green;
+.pick {
+  font-family: "MyWebFont1";
+  font-size: 150px;
+  margin-top: 15%;
 }
-
 .rutt1 {
   width: 50%;
 }
