@@ -71,22 +71,6 @@
 				camera.updateProjectionMatrix();
 			})
 
-			//FontLoader
-			var loader = new THREE.FontLoader();
-			loader.load( './js/helvetiker_regular.typeface.json', function ( font ) {
-
-				var geometry = new THREE.TextGeometry( 'Hello three.js!', {
-					font: font,
-					size: 80,
-					height: 5,
-					curveSegments: 12,
-					bevelEnabled: true,
-					bevelThickness: 10,
-					bevelSize: 8,
-					bevelOffset: 0,
-					bevelSegments: 5
-				} );
-			} );
 
 
 			//textureloader
@@ -116,6 +100,43 @@
 			var tavlailmatarTexture = textureLoader.load("./Bilder/google1.jpg")
 
 
+			// instantiate a loader
+			var loader = new THREE.SVGLoader();
+
+			// load a SVG resource
+			loader.load(
+				// resource URL
+				'./Bilder/test-text.svg',
+				// called when the resource is loaded
+				function ( data ) {
+
+					var paths = data.paths;
+					var group = new THREE.Group();
+
+					for ( var i = 0; i < paths.length; i ++ ) {
+
+						var path = paths[ i ];
+
+						var material = new THREE.MeshBasicMaterial( {
+							color: path.color,
+							side: THREE.DoubleSide,
+							depthWrite: false
+						} );
+
+						var shapes = path.toShapes( true );
+
+						for ( var j = 0; j < shapes.length; j ++ ) {
+
+							var shape = shapes[ j ];
+							var geometry = new THREE.ShapeBufferGeometry( shape );
+							var mesh = new THREE.Mesh( geometry, material );
+							group.add( mesh );
+
+						}
+
+					}
+
+					scene.add( group );
 
 
 			//golvet
