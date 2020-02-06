@@ -113,7 +113,7 @@
 			var tavladurerTexture = textureLoader.load("./Bilder/Artboard1.png")
 			var windowTexture = textureLoader.load("./Bilder/window.jpg")
 			var bedTexture = textureLoader.load("./Bilder/velvet.jpg")
-			var tavlailmatarTexture = textureLoader.load("./Bilder/Ilmatar.jpg")
+			var tavlailmatarTexture = textureLoader.load("./Bilder/google1.jpg")
 
 
 
@@ -151,7 +151,7 @@
 			tavla.castShadow = true;
 			scene.add( tavladurer );
 
-			var geometry = new THREE.CubeGeometry(28, 20, .2);
+			var geometry = new THREE.CubeGeometry(300, 300, .1);
 			var material = new THREE.MeshPhongMaterial( {
 				map: tavlailmatarTexture } );
 			var tavlailmatar = new THREE.Mesh( geometry, material );
@@ -187,9 +187,11 @@
 			tavla.position.z = 200;
 			tavla.position.x =-10;
 
-			tavlailmatar.position.y = 30;
-			tavlailmatar.position.z = -39;
+			tavlailmatar.position.y = -19.5;
+			tavlailmatar.position.z = -20;
 			tavlailmatar.position.x =10;
+			tavlailmatar.rotation.x =1.57;
+
 
 			tavladurer.position.y = 20;
 			tavladurer.position.z = -39;
