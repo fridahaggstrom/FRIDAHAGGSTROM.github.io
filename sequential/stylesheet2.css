@@ -11,17 +11,18 @@
 }
 
 a:link {
-  color: black;
+  color: white;
   font-size: 80px;
   text-decoration: none;
 }
 
 a:hover {
-  color: black;
-  text-decoration: underline;
+  color: white;
+  text-decoration: none;
+  text-shadow: 3px 3px 5px black;
 }
 
 a:visited {
-  color: black;
+  color: white;
   text-decoration: none;
 }
