@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link
+      href="stylesheet2.css"
+      type="text/css"
+      rel="stylesheet">
+      <title>Displacement</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script>
+      $(document).ready(function(){
+        $(document).mousemove(function(event){
+          $("span").text(event.pageX + ", " + event.pageY);
+        });
+
+      });
+      $(document).bind('mousemove', function(e){
+          $('#tail').css({
+             left:  e.pageX + 20,
+             top:   e.pageY
+          });
+
+      });
+      </script>
+    </head>
+      <body>
+        <p class = "textstyle" id="tail"> <span></span></p>
+        <img src="./Bilder/rutt1.2.png" class="rutt1">
+        <img src="./Bilder/rutt2.2.png" class="rutt2">
+        <img src="./Bilder/rutt3.2.png" class="rutt3">
+        <img src="./Bilder/bild6.png" class="rutt6"></p>
+
+
+      </body>
+  </html>

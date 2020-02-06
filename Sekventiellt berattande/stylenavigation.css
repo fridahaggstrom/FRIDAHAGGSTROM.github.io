@@ -1,0 +1,21 @@
+@font-face {
+    font-family:"MyWebFont1";
+    src: url("./Type/Surt-Regular.woff");
+  }
+
+  #tail {
+      position: absolute;
+      float: left;
+
+  }
+
+.textstyle {
+  font-family: "MyWebFont1";
+  font-size: 200px;
+  color: blue;
+}
+
+.rutt1 {
+  width: 50%;
+
+}
