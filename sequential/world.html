@@ -18,6 +18,7 @@
 		</div>
 		<script src="./js/three.js"></script>
 		<script src="./js/OrbitControls.js"></script>
+		<script src="./js/FontLoader.js"></script>
 
 		<script>
 			// Our Javascript will go here.
@@ -70,7 +71,22 @@
 				camera.updateProjectionMatrix();
 			})
 
+			//FontLoader
+			var loader = new THREE.FontLoader();
+			loader.load( './js/helvetiker_regular.typeface.json', function ( font ) {
 
+				var geometry = new THREE.TextGeometry( 'Hello three.js!', {
+					font: font,
+					size: 80,
+					height: 5,
+					curveSegments: 12,
+					bevelEnabled: true,
+					bevelThickness: 10,
+					bevelSize: 8,
+					bevelOffset: 0,
+					bevelSegments: 5
+				} );
+			} );
 
 
 			//textureloader
