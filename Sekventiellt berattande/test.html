@@ -73,8 +73,7 @@
 
 			//FontLoader
 			var loader = new THREE.FontLoader();
-
-			loader.load( './Type/Surt-Medium.otf', function ( font ) {
+			loader.load( './type/Surt-Medium.otf', function ( font ) {
 
 				var geometry = new THREE.TextGeometry( 'Hello three.js!', {
 					font: font,
@@ -145,7 +144,7 @@
 			tavla.castShadow = true;
 			scene.add( tavla );
 
-			var geometry = new THREE.CubeGeometry(14, 20, .2);
+			var geometry = new THREE.CubeGeometry(40, 60, .1);
 			var material = new THREE.MeshPhongMaterial( {
 				map: tavladurerTexture } );
 			var tavladurer = new THREE.Mesh( geometry, material );
