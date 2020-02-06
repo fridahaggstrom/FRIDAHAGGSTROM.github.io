@@ -1,9 +1,10 @@
 @font-face {
   font-family: "MyWebFont1";
-  src: url("./Type/PanamaItalic.woff");
+  src: url("https://fridahaggstrom.github.io/sequential/Type/PanamaItalic.woff");
 }
 
 .pick {
+
   font-family: "MyWebFont1";
   font-size: 80px;
   align: center;
