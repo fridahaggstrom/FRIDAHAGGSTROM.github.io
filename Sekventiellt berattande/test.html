@@ -14,7 +14,7 @@
 		</style>
 	</head>
 		<body>
-			<div id="info"><p>Leave</p></a>
+			<div id="info"><p>Scroll + Click to move</p></a>
 		</div>
 		<script src="./js/three.js"></script>
 		<script src="./js/OrbitControls.js"></script>
@@ -73,7 +73,7 @@
 
 			//FontLoader
 			var loader = new THREE.FontLoader();
-			loader.load( './https://fridahaggstrom.github.io/Sekventiellt%20berattande/type/Surt-Medium.otf', function ( font ) {
+			loader.load( './js/helvetiker_regular.typeface.json', function ( font ) {
 
 				var geometry = new THREE.TextGeometry( 'Hello three.js!', {
 					font: font,
