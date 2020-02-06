@@ -73,7 +73,7 @@
 
 			//FontLoader
 			var loader = new THREE.FontLoader();
-			loader.load( './type/Surt-Medium.otf', function ( font ) {
+			loader.load( './https://fridahaggstrom.github.io/Sekventiellt%20berattande/type/Surt-Medium.otf', function ( font ) {
 
 				var geometry = new THREE.TextGeometry( 'Hello three.js!', {
 					font: font,
@@ -144,7 +144,7 @@
 			tavla.castShadow = true;
 			scene.add( tavla );
 
-			var geometry = new THREE.CubeGeometry(80, 60, .1);
+			var geometry = new THREE.CubeGeometry(80, 80, .1);
 			var material = new THREE.MeshPhongMaterial( {
 				map: tavladurerTexture } );
 			var tavladurer = new THREE.Mesh( geometry, material );
