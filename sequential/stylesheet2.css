@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "MyWebFont1";
+  src: url("./Type/PanamaItalic.woff");
+}
+
+.pick {
+  font-family: "MyWebFont1";
+  font-size: 80px;
+  align: center;
+}
+
+a:link {
+  color: black;
+  font-size: 80px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
