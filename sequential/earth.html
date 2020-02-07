@@ -74,7 +74,7 @@
 			//textureloader
 			var textureLoader = new THREE.TextureLoader();
 
-				var textureNoiseColor = textureLoader.load( "./Bilder/earth_atmos_2048.jpg" );
+				var textureNoiseColor = textureLoader.load( "./Bilder/kiara_8_sunset.jpg" );
 				textureNoiseColor.repeat.set( 1, 1 );
 				textureNoiseColor.wrapS = textureNoiseColor.wrapT = THREE.RepeatWrapping;
 				textureNoiseColor.format = THREE.RGBFormat;
@@ -91,7 +91,7 @@
 					textureSpace.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
 					textureSpace.format = THREE.RGBFormat;
 
-					var textureWorld = textureLoader.load( "./Bilder/kiara_8_sunset.jpg" );
+					var textureWorld = textureLoader.load( "./Bilder/earth_atmos_2048.jpg" );
 					textureWorld.repeat.set( 1, 1 );
 					textureWorld.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
 					textureWorld.format = THREE.RGBFormat;
@@ -113,7 +113,7 @@
 			var space = new THREE.Mesh( geometry, material );
 			scene.add( space );
 
-			var geometry = new THREE.SphereBufferGeometry(400, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(550, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
@@ -122,7 +122,7 @@
 			var world = new THREE.Mesh( geometry, material );
 			scene.add( world );
 
-			var geometry = new THREE.SphereBufferGeometry(700, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(800, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,

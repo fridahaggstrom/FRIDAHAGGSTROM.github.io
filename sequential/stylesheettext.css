@@ -8,13 +8,36 @@
   src: url("https://fridahaggstrom.github.io/sequential/type/PanamaRegular.woff")
 }
 
+a:link {
+  color: black;
+  font-size: 80px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+  text-shadow: 3px 3px 5px black;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
 .back {
   font-family: "MyWebFont1";
   font-size: 15px;
 }
 
 .paragraf1 {
-  transform: rotate(-14deg);
+  transform: rotate(-2deg);
+  font-family: "MyWebFont2";
+  font-size: 20px;
+}
+
+.paragraf2 {
+  transform: rotate(4deg);
   font-family: "MyWebFont2";
   font-size: 20px;
 }
