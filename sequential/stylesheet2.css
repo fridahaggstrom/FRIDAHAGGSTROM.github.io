@@ -4,25 +4,72 @@
 }
 
 .pick {
-
   font-family: "MyWebFont1";
-  font-size: 80px;
+  font-size: 70px;
+
   align: center;
 }
 
+
+.rotera {
+  transform: rotate(-14deg);
+}
+
 a:link {
-  color: white;
+  color: black;
   font-size: 80px;
   text-decoration: none;
 }
 
 a:hover {
-  color: white;
+  color: black;
   text-decoration: none;
   text-shadow: 3px 3px 5px black;
 }
 
 a:visited {
-  color: white;
+  color: black;
   text-decoration: none;
+}
+
+.bild1 {
+  width: 50%;
+  margin-top: -13%;
+  float: left;
+}
+
+.bild2 {
+  width: 50%;
+  margin-top:-8%;
+  float: right;
+}
+
+.bild3 {
+  position: relative;
+  float:left;
+  width: 50%;
+  margin-top: -7%;
+}
+
+.bild4 {
+  position: relative;
+  float:right;
+  width: 50%;
+  margin-top: -10%;
+}
+
+.info {
+  font-family: "MyWebFont1";
+  font-size: 20px;
+}
+
+.back {
+  font-family: "MyWebFont1";
+  font-size: 15px;
+}
+
+.bildbakgrund {
+  position: relative;
+  margin-top: -20%;
+  width: 400%;
 }

@@ -110,9 +110,9 @@
 						textureSpace.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
 						textureSpace.format = THREE.RGBFormat;
 
-				var tavlaTexture = textureLoader.load("./Bilder/Artboard1.png")
+				var tavlaTexture = textureLoader.load("./Bilder/mapas2.png")
 				var tavladurerTexture = textureLoader.load("./Bilder/mapas1.png")
-				var windowTexture = textureLoader.load("./Bilder/window.jpg")
+				var windowTexture = textureLoader.load("./Bilder/mapas3.jpg")
 				var bedTexture = textureLoader.load("./Bilder/velvet.jpg")
 				var tavlailmatarTexture = textureLoader.load("./Bilder/google1.jpg")
 
@@ -136,7 +136,7 @@
 
 				//kuberna
 
-				var geometry = new THREE.CubeGeometry(22, 18, .2);
+				var geometry = new THREE.CubeGeometry(80, 40, .1);
 				var material = new THREE.MeshPhongMaterial( {
 					map: tavlaTexture } );
 				var tavla = new THREE.Mesh( geometry, material );
@@ -157,7 +157,7 @@
 				tavlailmatar.castShadow = true;
 				//scene.add( tavlailmatar );
 
-				var geometry = new THREE.CubeGeometry(40, 32, .2);
+				var geometry = new THREE.CubeGeometry(80, 50, .1);
 				var material = new THREE.MeshPhongMaterial( {
 					map: windowTexture } );
 				var tavla2 = new THREE.Mesh( geometry, material );
@@ -182,22 +182,24 @@
 				//location
 
 
-				tavla.position.y = 8;
-				tavla.position.z = 200;
-				tavla.position.x =-10;
+				tavla.position.y = 15;
+				tavla.position.z = -80;
+				tavla.position.x =50;
+				tavla.rotation.y=-10;
 
 				tavlailmatar.position.y = -5;
-				tavlailmatar.position.z = -20;
-				tavlailmatar.position.x =10;
+				tavlailmatar.position.z = -30;
+				tavlailmatar.position.x =5;
 				tavlailmatar.rotation.x =1.57;
 
 
 				tavladurer.position.y = 20;
-				tavladurer.position.z = -39;
-				tavladurer.position.x =36;
+				tavladurer.position.z = -25;
+				tavladurer.position.x =-30;
+				tavladurer.rotation.y=-2;
 
-				tavla2.position.y = 20;
-				tavla2.position.z = 60;
+				tavla2.position.y = 10;
+				tavla2.position.z = 40;
 				tavla2.position.x =12;
 
 
