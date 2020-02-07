@@ -55,10 +55,17 @@ a:visited {
   position: relative;
   float:right;
   width: 50%;
-  margin-top: -10%;
+  margin-top: -1%;
 }
 
 .info {
+  padding:20px;
+  align: center;
+  font-family: "MyWebFont1";
+  font-size: 20px;
+}
+
+.about {
   padding:20px;
   float:right;
   margin-top: -15%;
