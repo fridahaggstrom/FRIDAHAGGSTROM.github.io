@@ -96,10 +96,15 @@
 					textureWorld.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
 					textureWorld.format = THREE.RGBFormat;
 
+					var textureWorld2 = textureLoader.load( "./Bilder/moon_1024.jpg" );
+					textureWorld2.repeat.set( 1, 1 );
+					textureWorld2.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
+					textureWorld2.format = THREE.RGBFormat;
+
 
 
 			//space
-			var geometry = new THREE.SphereBufferGeometry(150, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(200, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
@@ -108,7 +113,7 @@
 			var space = new THREE.Mesh( geometry, material );
 			scene.add( space );
 
-			var geometry = new THREE.SphereBufferGeometry(250, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(300, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
@@ -116,6 +121,15 @@
 				map: textureWorld});
 			var world = new THREE.Mesh( geometry, material );
 			scene.add( world );
+
+			var geometry = new THREE.SphereBufferGeometry(500, 64, 32);
+			var material = new THREE.MeshPhongMaterial( {
+				side: THREE.DoubleSide,
+				shininess: 0,
+				color: 0xffffff,
+				map: textureWorld2});
+			var world2 = new THREE.Mesh( geometry, material );
+			scene.add( world2 );
 
 			//spheres
 			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
@@ -145,6 +159,10 @@
 			world.position.z = 36;
 			world.position.x = 33;
 
+			world2.position.y=-12;
+			world2.position.z = 36;
+			world2.position.x = 33;
+
 			space.position.y=-12;
 			space.position.z = 36;
 			space.position.x = 33;
@@ -167,6 +185,8 @@
 			jord.rotation.y += 0.02;
 
 			space.rotation.y += 0.001;
+
+			world.rotation.y -= 0.001
 
 
 
