@@ -74,7 +74,7 @@
 			//textureloader
 			var textureLoader = new THREE.TextureLoader();
 
-				var textureNoiseColor = textureLoader.load( "./Bilder/disturb.jpg" );
+				var textureNoiseColor = textureLoader.load( "./Bilder/kiara_8_sunset.jpg" );
 				textureNoiseColor.repeat.set( 1, 1 );
 				textureNoiseColor.wrapS = textureNoiseColor.wrapT = THREE.RepeatWrapping;
 				textureNoiseColor.format = THREE.RGBFormat;
@@ -113,7 +113,7 @@
 			sphere.castShadow = true;
 		//	scene.add( sphere );
 
-			var geometry = new THREE.SphereBufferGeometry(5, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(50, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
