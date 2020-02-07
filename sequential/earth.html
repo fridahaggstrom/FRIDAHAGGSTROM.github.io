@@ -14,7 +14,7 @@
 		</style>
 	</head>
 	<body>
-		<div id="info"><p>Scroll to enter another world</p></a>
+		<div id="info"><p>Scroll to enter another world. Drag to look around.</p></a>
 	</div>
 		<script src="./js/three.js"></script>
 		<script src="./js/OrbitControls.js"></script>
@@ -39,11 +39,11 @@
 				light.position.x=10;
 				light.position.y=10;
 
-				light2 = new THREE.DirectionalLight (0xffffff, .4);
+				light2 = new THREE.DirectionalLight (0xffffff, .5);
 				scene.add(light2)
 				light2.position.x=0;
 
-				light3 = new THREE.AmbientLight( 0xffffff, 0.3 );
+				light3 = new THREE.AmbientLight( 0xffffff, 0.4 );
 				light3.castShadow = true;
 				scene.add( light3 )
 
@@ -74,7 +74,7 @@
 			//textureloader
 			var textureLoader = new THREE.TextureLoader();
 
-				var textureNoiseColor = textureLoader.load( "./Bilder/kiara_8_sunset.jpg" );
+				var textureNoiseColor = textureLoader.load( "./Bilder/smileys.png" );
 				textureNoiseColor.repeat.set( 1, 1 );
 				textureNoiseColor.wrapS = textureNoiseColor.wrapT = THREE.RepeatWrapping;
 				textureNoiseColor.format = THREE.RGBFormat;
@@ -94,7 +94,7 @@
 
 
 			//space
-			var geometry = new THREE.SphereBufferGeometry(300, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(200, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
