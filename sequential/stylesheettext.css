@@ -41,3 +41,9 @@ a:visited {
   font-family: "MyWebFont2";
   font-size: 20px;
 }
+
+
+.hr {
+transform: rotate(-2deg);
+border-top: 3px dotted black;
+}
