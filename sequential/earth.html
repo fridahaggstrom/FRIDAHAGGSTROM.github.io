@@ -74,7 +74,7 @@
 			//textureloader
 			var textureLoader = new THREE.TextureLoader();
 
-				var textureNoiseColor = textureLoader.load( "./Bilder/smileys.png" );
+				var textureNoiseColor = textureLoader.load( "./Bilder/wild.png" );
 				textureNoiseColor.repeat.set( 1, 1 );
 				textureNoiseColor.wrapS = textureNoiseColor.wrapT = THREE.RepeatWrapping;
 				textureNoiseColor.format = THREE.RGBFormat;
@@ -91,10 +91,15 @@
 					textureSpace.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
 					textureSpace.format = THREE.RGBFormat;
 
+					var textureWorld = textureLoader.load( "./Bilder/kiara_8_sunset.jpg" );
+					textureWorld.repeat.set( 1, 1 );
+					textureWorld.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
+					textureWorld.format = THREE.RGBFormat;
+
 
 
 			//space
-			var geometry = new THREE.SphereBufferGeometry(200, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(150, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
@@ -102,6 +107,15 @@
 				map: textureNoiseColor});
 			var space = new THREE.Mesh( geometry, material );
 			scene.add( space );
+
+			var geometry = new THREE.SphereBufferGeometry(250, 64, 32);
+			var material = new THREE.MeshPhongMaterial( {
+				side: THREE.DoubleSide,
+				shininess: 0,
+				color: 0xffffff,
+				map: textureWorld});
+			var world = new THREE.Mesh( geometry, material );
+			scene.add( world );
 
 			//spheres
 			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
@@ -127,6 +141,9 @@
 
 
 			//location
+			world.position.y=-12;
+			world.position.z = 36;
+			world.position.x = 33;
 
 			space.position.y=-12;
 			space.position.z = 36;

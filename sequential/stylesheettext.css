@@ -12,3 +12,9 @@
   font-family: "MyWebFont1";
   font-size: 15px;
 }
+
+.paragraf1 {
+  transform: rotate(-14deg);
+  font-family: "MyWebFont2";
+  font-size: 20px;
+}
