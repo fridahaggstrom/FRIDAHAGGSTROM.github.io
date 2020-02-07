@@ -6,8 +6,8 @@
 .pick {
   font-family: "MyWebFont1";
   font-size: 70px;
-
   align: center;
+  padding: 15px;
 }
 
 
@@ -48,14 +48,13 @@ a:visited {
   position: relative;
   float:left;
   width: 50%;
-  margin-top: -5%;
 }
 
 .bild4 {
   position: relative;
   float:right;
   width: 50%;
-  margin-top: -1%;
+  margin-top: -10%;
 }
 
 .info {
