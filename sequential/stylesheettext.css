@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "MyWebFont1";
+  src: url("https://fridahaggstrom.github.io/sequential/type/PanamaItalic.woff");
+}
+
+@font-face {
+  font-family: "MyWebFont2";
+  src: url("https://fridahaggstrom.github.io/sequential/type/PanamaRegular.woff")
+}
+
+.back {
+  font-family: "MyWebFont1";
+  font-size: 15px;
+}
