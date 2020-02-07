@@ -74,7 +74,7 @@
 			//textureloader
 			var textureLoader = new THREE.TextureLoader();
 
-				var textureNoiseColor = textureLoader.load( "./Bilder/wild.png" );
+				var textureNoiseColor = textureLoader.load( "./Bilder/earth_atmos_2048.jpg" );
 				textureNoiseColor.repeat.set( 1, 1 );
 				textureNoiseColor.wrapS = textureNoiseColor.wrapT = THREE.RepeatWrapping;
 				textureNoiseColor.format = THREE.RGBFormat;
@@ -113,7 +113,7 @@
 			var space = new THREE.Mesh( geometry, material );
 			scene.add( space );
 
-			var geometry = new THREE.SphereBufferGeometry(300, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(400, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
@@ -122,7 +122,7 @@
 			var world = new THREE.Mesh( geometry, material );
 			scene.add( world );
 
-			var geometry = new THREE.SphereBufferGeometry(500, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(700, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
@@ -187,6 +187,8 @@
 			space.rotation.y += 0.001;
 
 			world.rotation.y -= 0.001
+
+			world2.rotation.y += 0.001
 
 
 
