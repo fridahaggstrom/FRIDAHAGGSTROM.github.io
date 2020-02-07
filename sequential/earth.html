@@ -101,7 +101,7 @@
 					textureWorld2.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
 					textureWorld2.format = THREE.RGBFormat;
 
-					var textureWorld3 = textureLoader.load( "./Bilder/smileys.png" );
+					var textureWorld3 = textureLoader.load( "./Bilder/piz_compressed.exr" );
 					textureWorld3.repeat.set( 1, 1 );
 					textureWorld3.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
 					textureWorld3.format = THREE.RGBFormat;
@@ -127,7 +127,7 @@
 			var world = new THREE.Mesh( geometry, material );
 			scene.add( world );
 
-			var geometry = new THREE.SphereBufferGeometry(800, 64, 32);
+			var geometry = new THREE.SphereBufferGeometry(900, 64, 32);
 			var material = new THREE.MeshPhongMaterial( {
 				side: THREE.DoubleSide,
 				shininess: 0,
