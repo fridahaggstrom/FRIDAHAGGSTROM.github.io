@@ -1,10 +1,10 @@
 @font-face {
     font-family:"MyWebFont1";
-    src: url("./Type/PanamaRegular.woff");
+    src: url("./Type/PanamaItalic.woff");
   }
 
   #tail {
-      position: absolute;
+      position: relative;
       float: left;
 
   }
@@ -16,7 +16,36 @@
 }
 
 .rutt1 {
-  width: 50%;
-  margin-left: 20%;
+  width: 300%;
+  margin-left: -20%;
+  margin-top: -40%;
 
+}
+
+.div1 {
+  color: blue;
+  font-size: 150px;
+  margin-left:90%;
+  margin-top: -70%;
+}
+
+a:link {
+  color: blue;
+  font-size: 150px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
+  text-decoration: none;
+}
+
+.back {
+  font-family: "MyWebFont1";
+  font-size: 15px;
 }

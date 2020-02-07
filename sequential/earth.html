@@ -101,6 +101,11 @@
 					textureWorld2.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
 					textureWorld2.format = THREE.RGBFormat;
 
+					var textureWorld3 = textureLoader.load( "./Bilder/smileys.png" );
+					textureWorld3.repeat.set( 1, 1 );
+					textureWorld3.wrapS = textureSpace.wrapT = THREE.RepeatWrapping;
+					textureWorld3.format = THREE.RGBFormat;
+
 
 
 			//space
@@ -130,6 +135,15 @@
 				map: textureWorld2});
 			var world2 = new THREE.Mesh( geometry, material );
 			scene.add( world2 );
+
+			var geometry = new THREE.SphereBufferGeometry(1300, 64, 32);
+			var material = new THREE.MeshPhongMaterial( {
+				side: THREE.DoubleSide,
+				shininess: 0,
+				color: 0xffffff,
+				map: textureWorld2});
+			var world3 = new THREE.Mesh( geometry, material );
+			scene.add( world3 );
 
 			//spheres
 			var geometry = new THREE.SphereBufferGeometry(6, 64, 32);
@@ -163,6 +177,11 @@
 			world2.position.z = 36;
 			world2.position.x = 33;
 
+
+			world3.position.y=-12;
+			world3.position.z = 36;
+			world3.position.x = 33;
+
 			space.position.y=-12;
 			space.position.z = 36;
 			space.position.x = 33;
@@ -186,9 +205,11 @@
 
 			space.rotation.y += 0.001;
 
-			world.rotation.y -= 0.001
+			world.rotation.y -= 0.001;
 
-			world2.rotation.y += 0.001
+			world2.rotation.y += 0.001;
+
+			world3.rotation.y += 0.002;
 
 
 
